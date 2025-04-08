@@ -1,0 +1,54 @@
+services:
+  mysql_db:
+    container_name: mysqldb
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+      MYSQL_DATABASE: base_negocio_landing
+      MYSQL_ALLOW_LOCAL_INFILE: 1 
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ftp-data:/ftp 
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      retries: 5
+      start_period: 30s
+
+  ftp:
+    image: stilliard/pure-ftpd
+    container_name: ftp-server
+    restart: always
+    environment:
+      FTP_USER_NAME: "user"
+      FTP_USER_PASS: "password"
+      FTP_USER_HOME: "/home/ftpusers/data"
+    ports:
+      - "21:21"
+      - "30000-30009:30000-30009"
+    volumes:
+      - ftp-data:/home/ftpusers/data 
+
+  portainer:
+    image: portainer/portainer-ce:latest
+    container_name: portainer
+    restart: always
+    ports:
+      - "9000:9000"
+    volumes:
+      - portainer-data:/data
+      - /var/run/docker.sock:/var/run/docker.sock
+
+volumes:
+  mysql-data:
+  ftp-data:
+  mongo-data:
+  portainer-data:
