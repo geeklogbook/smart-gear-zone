@@ -1,4 +1,4 @@
-use base_negocio_today;
+use base_negocio_staging;
 
 -- STORE PROCEDURE PARA CREAR LA TABLA CALENDARIO
 SET GLOBAL log_bin_trust_function_creators = 1;

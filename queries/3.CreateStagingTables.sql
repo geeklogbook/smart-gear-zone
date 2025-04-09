@@ -1,16 +1,16 @@
-DROP DATABASE IF EXISTS base_negocio_today;
-CREATE DATABASE IF NOT EXISTS base_negocio_today;
-USE base_negocio_today;
+DROP DATABASE IF EXISTS base_negocio_staging;
+CREATE DATABASE IF NOT EXISTS base_negocio_staging;
+USE base_negocio_staging;
 
 CREATE TABLE IF NOT EXISTS canal_venta (
   IdCanal				INTEGER,
   Canal 				VARCHAR(50)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
-CREATE TABLE IF NOT EXISTS `cargo` (
-  `IdCargo` integer NOT NULL AUTO_INCREMENT,
-  `Cargo` varchar(50) NOT NULL,
-  PRIMARY KEY (`IdCargo`)
+CREATE TABLE IF NOT EXISTS cargo (
+  IdCargo integer NOT NULL AUTO_INCREMENT,
+  Cargo varchar(50) NOT NULL,
+  PRIMARY KEY (IdCargo)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 CREATE TABLE `cliente` (
@@ -74,9 +74,9 @@ CREATE TABLE IF NOT EXISTS proveedor (
 	Departamento	VARCHAR(80)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
-CREATE TABLE IF NOT EXISTS `sector` (
-  `IdSector` integer NOT NULL AUTO_INCREMENT,
-  `Sector` varchar(50) NOT NULL,
+CREATE TABLE IF NOT EXISTS sector (
+  IdSector integer NOT NULL AUTO_INCREMENT,
+  Sector varchar(50) NOT NULL,
   PRIMARY KEY (`IdSector`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 

@@ -1,10 +1,10 @@
-INSERT INTO base_negocio_today.canal_venta (
+INSERT INTO base_negocio_staging.canal_venta (
     `IdCanal`,
     `Canal`
 )
 SELECT
     `IdCanal`,
     `Canal`
-FROM base_negocio_landing.canal_venta;
+FROM base_negocio_raw.canal_venta;
 
-DROP TABLE base_negocio_landing.canal_venta;
+DROP TABLE base_negocio_raw.canal_venta;

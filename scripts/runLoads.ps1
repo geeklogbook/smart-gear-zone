@@ -22,4 +22,4 @@ foreach ($sqlFile in $sqlFiles) {
     Write-Host "$sqlFile ejecutado correctamente." -ForegroundColor Green
 }
 
-Write-Host "SCRIPTS EXECUTED." -ForegroundColor Green
+Write-Host "SCRIPTS EXECUTED" -ForegroundColor Green

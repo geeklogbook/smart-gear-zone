@@ -1,4 +1,4 @@
-use base_negocio_today;
+use base_negocio_staging;
 SET GLOBAL log_bin_trust_function_creators = 1;
 DROP FUNCTION IF EXISTS `UC_Words`;
 DELIMITER $$
