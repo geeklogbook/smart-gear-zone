@@ -1,4 +1,4 @@
-INSERT INTO base_negocio_today.producto (
+INSERT INTO staging.producto (
     `IdProducto`,
     `Producto`,
     `Categoria`,
@@ -9,6 +9,6 @@ SELECT
     IFNULL(NULLIF(UC_Words(TRIM(Concepto)), ''), 'Sin Dato') AS Producto,
     IFNULL(NULLIF(UC_Words(TRIM(Tipo)), ''), 'Sin Dato') AS Categoria,
     Precio2 AS Precio
-FROM base_negocio_landing.producto;
+FROM raw.producto;
 
-DROP TABLE base_negocio_landing.producto;
+DROP TABLE raw.producto;

@@ -1,4 +1,4 @@
-INSERT INTO base_negocio_staging.cliente (
+INSERT INTO staging.cliente (
   IdCliente,
   Provincia,
   Nombre_y_Apellido,
@@ -29,6 +29,6 @@ SELECT
   Fecha_Ultima_Modificacion,
   Usuario_Ultima_Modificacion,
   Marca_Baja
-FROM base_negocio_raw.cliente;
+FROM raw.cliente;
 
-DROP TABLE base_negocio_landing.cliente;
+DROP TABLE raw.cliente;

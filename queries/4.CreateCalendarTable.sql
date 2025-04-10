@@ -1,5 +1,4 @@
-use base_negocio_staging;
-
+use staging;
 -- STORE PROCEDURE PARA CREAR LA TABLA CALENDARIO
 SET GLOBAL log_bin_trust_function_creators = 1;
 DROP PROCEDURE IF EXISTS `Llenar_dimension_calendario`;
@@ -22,7 +21,6 @@ BEGIN
         SET currentdate = ADDDATE(currentdate,INTERVAL 1 DAY);
     END WHILE;
 END$$
-DELIMITER ;
 
 -- Genera la tabla calendario
 DROP TABLE IF EXISTS `calendario`;

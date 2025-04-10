@@ -1,10 +1,10 @@
-INSERT INTO base_negocio_today.sector (
+INSERT INTO staging.sector (
     `IdSector`,
     `Sector`
 )
 SELECT 
 `IdSector`,
 `Sector`
- FROM base_negocio_landing.sector;
+ FROM raw.sector;
 
-DROP TABLE base_negocio_landing.sector;
+DROP TABLE raw.sector;

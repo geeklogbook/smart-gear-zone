@@ -1,5 +1,5 @@
--- Active: 1741138916750@@127.0.0.1@3306@base_negocio_landing
-USE base_negocio_raw;
+-- Active: 1744155430133@@127.0.0.1@3306@raw
+USE raw;
 
 -- If you can't load the data using local data local infile
 SET GLOBAL local_infile=1;

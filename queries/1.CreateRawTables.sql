@@ -1,7 +1,7 @@
--- Active: 1741138916750@@127.0.0.1@3306@base_negocio_landing
-DROP DATABASE IF EXISTS base_negocio_raw;
-CREATE DATABASE IF NOT EXISTS base_negocio_raw;
-USE base_negocio_raw;
+-- Active: 1744155430133@@127.0.0.1@3306
+DROP DATABASE IF EXISTS raw;
+CREATE DATABASE IF NOT EXISTS raw;
+USE raw;
 
 CREATE TABLE IF NOT EXISTS canal_venta (
   IdCanal				INTEGER,

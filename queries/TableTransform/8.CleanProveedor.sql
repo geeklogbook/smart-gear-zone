@@ -1,4 +1,5 @@
-INSERT INTO base_negocio_today.proveedor (
+-- Active: 1744155430133@@127.0.0.1@3306@raw
+INSERT INTO staging.proveedor (
   `IdProveedor`,
   `Nombre`,
   `Domicilio`,
@@ -15,6 +16,6 @@ SELECT
   IFNULL(NULLIF(UC_Words(TRIM(Provincia)), ''), 'Sin Dato') AS Provincia,
   IFNULL(NULLIF(UC_Words(TRIM(Pais)), ''), 'Sin Dato') AS Pais,
   IFNULL(NULLIF(UC_Words(TRIM(Departamento)), ''), 'Sin Dato') AS Departamento
-FROM base_negocio_landing.proveedor;
+FROM raw.proveedor;
 
-DROP TABLE base_negocio_landing.proveedor;
+DROP TABLE raw.proveedor;

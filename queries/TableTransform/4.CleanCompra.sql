@@ -1,4 +1,4 @@
-INSERT INTO base_negocio_today.compra (
+INSERT INTO staging.compra (
     `IdCompra`,
     `Fecha`,
     `IdProducto`,
@@ -13,6 +13,6 @@ SELECT
     `Cantidad`,
     `Precio`,
     `IdProveedor`
-FROM base_negocio_landing.compra;
+FROM raw.compra;
 
-DROP TABLE base_negocio_landing.compra;
+DROP TABLE raw.compra;

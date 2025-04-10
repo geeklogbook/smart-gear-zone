@@ -1,7 +1,7 @@
-use base_negocio_staging;
+use raw;
+use staging;
 SET GLOBAL log_bin_trust_function_creators = 1;
 DROP FUNCTION IF EXISTS `UC_Words`;
-DELIMITER $$
 CREATE DEFINER=`root`@`localhost` FUNCTION `UC_Words`( str VARCHAR(255) ) RETURNS varchar(255) CHARSET utf8
 BEGIN  
   DECLARE c CHAR(1);  
@@ -31,5 +31,4 @@ BEGIN
     END;  
   END WHILE;  
   RETURN s;  
-END$$
-DELIMITER ;
+END

@@ -1,4 +1,4 @@
-INSERT INTO base_negocio_today.sucursal (
+INSERT INTO staging.sucursal (
   IdSucursal,
   Provincia,
   Sucursal,
@@ -15,6 +15,6 @@ SELECT
   CAST(IFNULL(NULLIF(REPLACE(Latitud2, ',', '.'), ''), '0.0000000000') AS DECIMAL(13,10)) AS Latitud,
   CAST(IFNULL(NULLIF(REPLACE(Longitud2, ',', '.'), ''), '0.0000000000') AS DECIMAL(13,10)) AS Longitud,
   UC_Words(IFNULL(NULLIF(TRIM(Localidad), ''), 'Sin Dato')) AS Localidad
-FROM base_negocio_landing.sucursal;
+FROM raw.sucursal;
 
-DROP TABLE base_negocio_landing.sucursal;
+DROP TABLE raw.sucursal;

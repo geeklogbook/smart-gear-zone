@@ -1,10 +1,10 @@
-INSERT INTO base_negocio_today.tipo_gasto (
+INSERT INTO staging.tipo_gasto (
   `IdTipoGasto`,
   `Tipo_Gasto`
 )
 SELECT
   `IdTipoGasto`,
   `Descripcion`
-FROM base_negocio_landing.tipo_gasto;
+FROM raw.tipo_gasto;
 
-DROP TABLE base_negocio_landing.tipo_gasto;
+DROP TABLE raw.tipo_gasto;

@@ -1,6 +1,6 @@
-DROP DATABASE IF EXISTS base_negocio_staging;
-CREATE DATABASE IF NOT EXISTS base_negocio_staging;
-USE base_negocio_staging;
+DROP DATABASE IF EXISTS staging;
+CREATE DATABASE IF NOT EXISTS staging;
+USE staging;
 
 CREATE TABLE IF NOT EXISTS canal_venta (
   IdCanal				INTEGER,
@@ -13,21 +13,21 @@ CREATE TABLE IF NOT EXISTS cargo (
   PRIMARY KEY (IdCargo)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
-CREATE TABLE `cliente` (
-  `IdCliente` int NOT NULL,
-  `Provincia` varchar(50) COLLATE utf8mb4_spanish_ci DEFAULT NULL,
-  `Nombre_y_Apellido` varchar(80) COLLATE utf8mb4_spanish_ci DEFAULT NULL,
-  `Domicilio` varchar(150) COLLATE utf8mb4_spanish_ci DEFAULT NULL,
-  `Telefono` varchar(30) COLLATE utf8mb4_spanish_ci DEFAULT NULL,
-  `Edad` varchar(5) COLLATE utf8mb4_spanish_ci DEFAULT NULL,
-  `Localidad` varchar(80) COLLATE utf8mb4_spanish_ci DEFAULT NULL,
-  `Latitud` decimal(13,10) NOT NULL DEFAULT '0.0000000000',
-  `Longitud` decimal(13,10) NOT NULL DEFAULT '0.0000000000',
-  `Fecha_Alta` date NOT NULL,
-  `Usuario_Alta` varchar(20) COLLATE utf8mb4_spanish_ci DEFAULT NULL,
-  `Fecha_Ultima_Modificacion` date NOT NULL,
-  `Usuario_Ultima_Modificacion` varchar(20) COLLATE utf8mb4_spanish_ci DEFAULT NULL,
-  `Marca_Baja` tinyint DEFAULT NULL
+CREATE TABLE cliente (
+  IdCliente int NOT NULL,
+  Provincia varchar(50) COLLATE utf8mb4_spanish_ci DEFAULT NULL,
+  Nombre_y_Apellido varchar(80) COLLATE utf8mb4_spanish_ci DEFAULT NULL,
+  Domicilio varchar(150) COLLATE utf8mb4_spanish_ci DEFAULT NULL,
+  Telefono varchar(30) COLLATE utf8mb4_spanish_ci DEFAULT NULL,
+  Edad varchar(5) COLLATE utf8mb4_spanish_ci DEFAULT NULL,
+  Localidad varchar(80) COLLATE utf8mb4_spanish_ci DEFAULT NULL,
+  Latitud decimal(13,10) NOT NULL DEFAULT '0.0000000000',
+  Longitud decimal(13,10) NOT NULL DEFAULT '0.0000000000',
+  Fecha_Alta date NOT NULL,
+  Usuario_Alta varchar(20) COLLATE utf8mb4_spanish_ci DEFAULT NULL,
+  Fecha_Ultima_Modificacion date NOT NULL,
+  Usuario_Ultima_Modificacion varchar(20) COLLATE utf8mb4_spanish_ci DEFAULT NULL,
+  Marca_Baja tinyint DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
  CREATE TABLE IF NOT EXISTS compra (
@@ -48,6 +48,17 @@ CREATE TABLE empleado (
   IdCargo        int DEFAULT NULL,
   Salario        decimal(10,2) NOT NULL DEFAULT '0.00'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+
+CREATE TABLE IF NOT EXISTS empleado_duplicados (
+    IdEmpleado INT,
+    Apellido VARCHAR(100),
+    Nombre VARCHAR(100),
+    IdSucursal INT,
+    IdSector INT,
+    IdCargo INT,
+    Salario DECIMAL(10,2),
+    PRIMARY KEY (IdEmpleado, Apellido, Nombre) -- Permite almacenar duplicados
+);
 
 CREATE TABLE IF NOT EXISTS gasto (
   	IdGasto 		INTEGER,
@@ -80,14 +91,14 @@ CREATE TABLE IF NOT EXISTS sector (
   PRIMARY KEY (`IdSector`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
-CREATE TABLE `sucursal` (
-  `IdSucursal` int DEFAULT NULL,
-  `Sucursal` varchar(40) COLLATE utf8mb4_spanish_ci DEFAULT NULL,
-  `Domicilio` varchar(150) COLLATE utf8mb4_spanish_ci DEFAULT NULL,
-  `Localidad` varchar(80) COLLATE utf8mb4_spanish_ci DEFAULT NULL,
-  `Provincia` varchar(50) COLLATE utf8mb4_spanish_ci DEFAULT NULL,
-  `Latitud` decimal(13,10) NOT NULL DEFAULT '0.0000000000',
-  `Longitud` decimal(13,10) NOT NULL DEFAULT '0.0000000000'
+CREATE TABLE sucursal (
+  IdSucursal int DEFAULT NULL,
+  Sucursal varchar(40) COLLATE utf8mb4_spanish_ci DEFAULT NULL,
+  Domicilio varchar(150) COLLATE utf8mb4_spanish_ci DEFAULT NULL,
+  Localidad varchar(80) COLLATE utf8mb4_spanish_ci DEFAULT NULL,
+  Provincia varchar(50) COLLATE utf8mb4_spanish_ci DEFAULT NULL,
+  Latitud decimal(13,10) NOT NULL DEFAULT '0.0000000000',
+  Longitud decimal(13,10) NOT NULL DEFAULT '0.0000000000'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 
@@ -110,7 +121,7 @@ CREATE TABLE venta (
   Cantidad      int NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
-CREATE TABLE IF NOT EXISTS errores_venta (
+CREATE TABLE IF NOT EXISTS venta_errores (
   IdVenta        INTEGER,
   Fecha          DATE NOT NULL,
   Fecha_Entrega  DATE NOT NULL,

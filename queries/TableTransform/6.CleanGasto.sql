@@ -1,4 +1,4 @@
-INSERT INTO base_negocio_today.gasto (
+INSERT INTO staging.gasto (
     `IdGasto`,
     `IdSucursal`,
     `IdTipoGasto`,
@@ -11,6 +11,6 @@ SELECT
     `IdTipoGasto`,
     `Fecha`,
     `Monto`
-FROM base_negocio_landing.gasto;
+FROM raw.gasto;
 
-DROP TABLE base_negocio_landing.gasto;
+DROP TABLE raw.gasto;
