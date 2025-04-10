@@ -11,7 +11,7 @@ $sqlFiles = @(
 $dockerContainerName = "mysqldb" 
 
 foreach ($sqlFile in $sqlFiles) {
-    Write-Host "Ejecutando $sqlFile..."
+    Write-Host "Ejecutando $sqlFile"
     $sqlContent = Get-Content -Path $sqlFile -Raw
     $command = "docker exec -i $dockerContainerName mysql --host=$mysqlHost --port=$mysqlPort --user=$mysqlUser --password=$mysqlPassword -e `"$sqlContent`""
     Invoke-Expression $command
