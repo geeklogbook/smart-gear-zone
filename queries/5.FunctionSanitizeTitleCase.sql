@@ -1,8 +1,8 @@
-use raw;
 use staging;
-SET GLOBAL log_bin_trust_function_creators = 1;
 DROP FUNCTION IF EXISTS `UC_Words`;
-CREATE DEFINER=`root`@`localhost` FUNCTION `UC_Words`( str VARCHAR(255) ) RETURNS varchar(255) CHARSET utf8
+DELIMITER $$
+CREATE FUNCTION `UC_Words`( str VARCHAR(255) ) RETURNS varchar(255) CHARSET utf8
+DETERMINISTIC
 BEGIN  
   DECLARE c CHAR(1);  
   DECLARE s VARCHAR(255);  
@@ -31,4 +31,5 @@ BEGIN
     END;  
   END WHILE;  
   RETURN s;  
-END
+END$$
+DELIMITER ;
